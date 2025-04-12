@@ -1,0 +1,26 @@
+class Solution {
+    public void rotate(int[] nums, int k) { 
+        
+        if (nums.length<1) return;
+        int idx=0,j=0;
+        int n = nums.length;
+        k=k%n;
+        int[]arr=new int[n];
+        
+
+        idx=n-k;
+         for(int i=0;i<idx;i++){
+            arr[j] = nums[i];
+            j++;
+        }
+        j=0;
+        for(int i=idx;i<n;i++){
+           nums[j] = nums[i];
+           j++;
+        }
+        for(int i=0;i<idx;i++){
+            nums[j] = arr[i];
+            j++;
+        }
+    }
+}
