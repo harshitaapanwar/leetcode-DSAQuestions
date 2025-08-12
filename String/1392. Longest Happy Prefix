@@ -1,0 +1,23 @@
+class Solution {
+    public String longestPrefix(String s) {
+        int n = s.length();
+        int[] longPreSuff = new int[n];
+        int prefix = 0;
+        int currentIndex = 1;
+        while(currentIndex<n){
+            if(s.charAt(currentIndex)==s.charAt(prefix)){
+                prefix++;
+                longPreSuff[currentIndex]=prefix;
+                currentIndex++;
+            }else if(prefix!=0){
+                prefix = longPreSuff[prefix - 1];
+            }
+            else{
+                longPreSuff[currentIndex]=0;
+                currentIndex++;
+            }
+        }
+        int result = longPreSuff[n - 1];
+        return s.substring(0,result);
+    }
+}
